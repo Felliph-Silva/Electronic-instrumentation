@@ -33,7 +33,7 @@ while datetime('now') - tempoInicial < duration
     if s.NumBytesAvailable > 0
         % Lê os valores do Arduino
         data = readline(s); % Lê uma linha da porta serial
-        valores = str2double(split(data, ',')); % Divide pelos separadores de tabulação
+        valores = str2double(split(data, ' ')); % Divide pelos separadores de tabulação
 
         % Verifica se os dados são válidos
         if numel(valores) == 2
@@ -62,7 +62,7 @@ clear s;
 
 % Salva os dados em um arquivo
 dadosSalvos = [tempos, leiturasBruto, leiturasFiltrado];
-writematrix(dadosSalvos, 'leitura_sensor_filtado.txt', 'Delimiter', '\t');
+writematrix(dadosSalvos, 'leitura_sensor_filtrado.txt', 'Delimiter', '\t');
 
 % Gera o gráfico final com os dados armazenados
 figure(2);
